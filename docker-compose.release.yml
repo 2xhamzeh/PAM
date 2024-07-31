@@ -1,0 +1,47 @@
+version: '2.1'
+
+volumes:
+  db:
+
+services:
+  db:
+    image: mariadb:10.6
+    restart: always
+    command: --transaction-isolation=READ-COMMITTED --log-bin=binlog --binlog-format=ROW
+    # environment:
+    #   - MYSQL_ROOT_PASSWORD=pw
+    #   - MYSQL_PASSWORD=pw
+    #   - MYSQL_DATABASE=db_example2
+    #   - MYSQL_USER=user
+    #   - MYSQL_TCP_PORT=33066
+    env_file:
+      - .env
+    volumes:
+      - db:/var/lib/mysql
+    ports:
+      - '33066:33066'
+    healthcheck:
+      test:
+        [
+          'CMD',
+          'mysqladmin',
+          'ping',
+          '-h',
+          'localhost',
+          '-u',
+          'root',
+          '-p$$MYSQL_ROOT_PASSWORD',
+        ]
+      timeout: 20s
+      retries: 10
+  app:
+    image: registry.code.globalctgroup.com/pam/pam:1.0.2
+    depends_on:
+      db:
+        condition: service_healthy
+    build: .
+    env_file:
+      - .env
+    
+    ports:
+      - '8080:8080'

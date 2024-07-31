@@ -1,0 +1,82 @@
+@import '../../index';
+@import '../../static/extra-styles/animation';
+
+.login-container{
+  @include display-flex(flex,row wrap,space-between,center);
+  padding-inline: 110px;
+  gap: 70px;
+
+  @media screen and (min-width: 1981px){
+    justify-content: space-around;
+  }
+
+}
+.login-container__main-heading{
+  font-size: clamp(9.375rem, 5.936vw + 8.002rem, 17.5rem);
+  font-weight: 500;
+  background: $color-gradient;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+  @media screen and (min-width: 2000px) {
+    font-size: 22rem;
+  }
+}
+
+.login-button{
+  color:$color-dark;
+  display: inline-flex;
+  padding: 15px 25px;
+  align-items: center;
+  gap: 20px;
+  border-radius: 30px;
+  border: 1px solid #131E36;
+  cursor: pointer;
+  width: auto;
+  overflow: hidden;
+  font-size: clamp(1rem, 0.411vw + 0.905rem, 1.563rem);
+  transition: background-color .4s linear,transform .4s ease-in-out, color .4s ease-in-out ;
+  transform-origin: center;
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+  -webkit-appearance: none;
+  position: relative;
+  will-change: transform;
+  z-index: 0;
+  @media screen and (min-width: 2000px) {
+    font-size: 2rem;
+    padding: 20px 30px;
+  }
+  &::after{
+    @extend %animation-button-after;
+  }
+  &:hover::after{
+    @extend %animation-button-hover-after;
+  }
+  &:hover{
+    @extend %animation-button-hover;
+    color: $color-light;
+  }
+  img{
+    @include square(35px);
+    @media screen and (min-width: 2000px) {
+      @include square(45px);
+    }
+  }
+}
+@media screen and (max-width: 1088px) {
+  .login-container{
+    @include display-flex(flex,column wrap,center,center);
+    padding-inline: 0;
+    gap: 30px;
+
+  }
+  .login-button{
+    padding: 10px 20px;
+  }
+  
+}
+
+
+

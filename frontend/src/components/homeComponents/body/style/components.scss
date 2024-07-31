@@ -1,0 +1,259 @@
+@import "../../../../index";
+@import "../../../../static/extra-styles/animation";
+
+.main-header{
+  @include display-flex(flex,row wrap,space-between, start);
+}
+.directory-folder-list{
+  @include display-flex(flex,row wrap);
+  gap: 30px;
+  width: 98%;
+}
+
+.path-container{
+  @include display-flex(flex,row,center, center);
+  gap: 17px;
+  max-width: 100%;
+  @media screen and (max-width: 585px) {
+    gap: 10px;
+  }
+  .path-button{
+
+    @include fluid-text(26,16);
+    position: relative;
+    text-transform: capitalize;
+    max-width: 25ch;
+    @extend %text-truncate;
+  }
+  .current {
+    color: $color-green;
+    text-transform: capitalize;
+  }
+
+  .parent {
+    position: relative;
+    color: $color-dark;
+    text-transform: capitalize;
+    cursor: pointer;
+    gap: 17px;
+    transition: color .2s linear;
+    &:hover{
+      color: $color-light-blue;
+    }
+  }
+  .path-separator{
+    @include fluid-text(28,16);
+  }
+}
+
+.user-info{
+  @include fluid-text(24,16);
+  max-width: 400px;
+  text-wrap: wrap;
+  p{
+    span{
+      font-weight: 500;
+    }
+  }
+}
+/*sort section*/
+.sort-container{
+  border-bottom: 1px solid $color-dark;
+  margin-bottom: 40px;
+  margin-top: 60px;
+  height: auto;
+  @media screen and (min-width: 1800px) {
+    margin-bottom: 50px;
+    margin-top: 70px;
+  }
+  @media screen and (max-width: 960px) {
+    margin-top: 30px;
+  }
+  .sort-container-items{
+    width: 100%;
+    @include display-flex(flex,row wrap);
+    gap: 15px;
+    margin-bottom: 35px;
+    @media screen and (min-width: 1800px) {
+      margin-bottom: 30px;
+    }
+    .sort-item{
+      font-weight: 500;
+
+      @media screen and (min-width: 1800px) {
+        font-size: 22px;
+      }
+    }
+    .sort-items-btns{
+      @include display-flex(flex,row wrap);
+      gap: 15px;
+      position: relative;
+      z-index: 3;
+      transition: all .4s linear;
+
+      .sort-btn{
+        border: 1px solid $color-dark;
+        border-radius: 20px;
+        padding: 4px 10px;
+        @include display-flex(flex,row);
+        transition: all .4s linear;
+        gap: 8px;
+        transform: scale(1);
+        @media screen and (min-width: 1800px) {
+          font-size: 22px;
+          padding: 18px 27px;
+        }
+        &:hover{
+          transform: scale(1.05);
+        }
+        .btn-name{
+          text-wrap: nowrap;
+        }
+        .arrow{
+            @include fluid-width(22,16);
+            cursor: pointer;
+            transition: transform 0.4s ease;
+        }
+        .arrow.up{
+          cursor: pointer;
+          transform: rotate(180deg);
+        }
+        .arrow.down{
+          cursor: pointer;
+          transform: rotate(0deg);
+        }
+        &.active {
+          margin-bottom: 70px;
+          @media screen and (min-width: 1800px) {
+            margin-bottom: 105px;
+          }
+        }
+        &.active-status {
+          margin-bottom: 110px;
+          @media screen and (min-width: 1800px) {
+            margin-bottom: 135px;
+          }
+        }
+      }
+
+      #status,#datum,#folderName,#modelName,#author{
+        min-width: 160px;
+        height: 30px;
+        gap: 35px;
+        @include display-flex(flex,row,space-between, center);
+        position: relative;
+        cursor: pointer;
+
+        .dropdown-menu{
+          position: absolute;
+          border-bottom:1px solid $color-dark;
+          border-left:1px solid $color-dark;
+          border-right:1px solid $color-dark;
+          border-radius: 14px;
+          width: calc(100% + 2px);
+          height: 135px;
+          right: -1px;
+          top: -1px;
+          display: none;
+          gap:8px;
+          opacity: 0;
+          transform: translateY(-4px);
+          transition: opacity 0.5s ease, transform 0.9s linear;
+          @media screen and (min-width: 1800px) {
+            border-radius: 20px;
+          }
+
+
+          &.visible {
+            @include display-flex(flex,column,end);
+            opacity: 1;
+            transform: translateY(0);
+          }
+          .dropdown-menu-back{
+            background-color: $color-light;
+            border-bottom-left-radius: 14px;
+            border-bottom-right-radius: 14px;
+            @media screen and (min-width: 1800px) {
+              border-bottom-left-radius: 20px;
+              border-bottom-right-radius: 20px;
+              padding: 2px;
+            }
+            .dropdown-items{
+              padding: 6px;
+              @include display-flex(flex,row,flex-start,center);
+              gap:8px;
+              color: $color-dark;
+              transition: color 0.3s ease;
+              cursor: pointer;
+
+              &:hover{
+                color:$color-extra-blue;
+              }
+
+              input[type="checkbox"] {
+                @include custom-input;
+                @media screen and (min-width: 1800px) {
+                  @include size(.7em,.7em);
+                }
+
+                &:checked{
+                  background: $color-gradient;
+                }
+              }
+              label{
+                cursor: pointer;
+                font-size: 15px;
+                @include display-flex(flex,row,flex-start,center);
+                gap: 8px;
+                @media screen and (min-width: 1800px) {
+                  font-size: 20px;
+                }
+              }
+            }
+          }
+
+        }
+        #status{
+          @media screen and (min-width: 1800px) {
+            height: 165px;
+          }
+        }
+      }
+      .sort-btn-status{
+        @media screen and (min-width: 1800px) {
+          width: 200px;
+        }
+      }
+      #datum, #folderName, #modelName,#author{
+        .dropdown-menu{
+          height: 100px;
+          @media screen and (min-width: 1800px) {
+            height: 130px;
+          }
+        }
+      }
+
+      #folderName,#author{
+        .dropdown-menu{
+          .dropdown-menu-back{
+            background-color: $color-light;
+            .dropdown-items{
+              color: $color-dark;
+              &:hover{
+                color:$color-light-blue;
+              }
+              input[type="radio"] {
+                background-color: $color-light;
+                transition: background-color .4s ease;
+                &:checked{
+                  background-color: $color-light-blue;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

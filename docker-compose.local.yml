@@ -1,0 +1,30 @@
+version: '2.1'
+
+volumes:
+  db:
+
+services:
+  db:
+    image: mariadb:10.6
+    restart: always
+    command: --transaction-isolation=READ-COMMITTED --log-bin=binlog --binlog-format=ROW
+    env_file:
+      - .env
+    volumes:
+      - db:/var/lib/mysql
+    ports:
+      - '3306:3306'
+    healthcheck:
+      timeout: 20s
+      retries: 10
+#  app:
+#    depends_on:
+#      db:
+#        condition: service_healthy
+#    build: .
+#    env_file:
+#      - .env
+#    # volumes:
+#    #   - /home/pam/certs2:/certs
+#    ports:
+#      - '8080:8080'

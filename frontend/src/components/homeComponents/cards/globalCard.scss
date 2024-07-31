@@ -1,0 +1,135 @@
+@import "../../../index";
+
+.container{
+  @include size(300px,250px);
+    padding: 8px;
+    border-radius: 5px;
+    @include display-flex(flex,row,space-between);
+    cursor: pointer;
+    @media screen and (min-width: 1800px){
+      @include size(400px,320px);
+      padding: 10px;
+    }
+    @media screen and (max-width: 950px){
+      @include size(280px,206px);
+      padding: 6px;
+    }
+  .container-inner{
+    @include display-flex(flex, row);
+    width: 100%;
+    .container-left{
+      @include display-flex(flex,column,space-between);
+      width: 90%;
+      gap: 8px;
+      .container-heading{
+        @include display-flex(flex,column wrap);
+        gap: 15px;
+        width: 100%;
+        .icon{
+          padding: 0;
+          margin: 0;
+          @include size(25px,27.5px);
+          @media screen and (min-width: 1800px){
+            @include size(35px,37.5px);
+          }
+        }
+        .container-heading-info{
+          @include display-flex(flex, column);
+          gap: 10px;
+          width: 100%;
+          .name{
+            font-weight: 500;
+            @include fluid-text(23,16);
+            text-transform: capitalize;
+            width: 100%;
+            @extend %text-truncate;
+          }
+        }
+      }
+      .container-info{
+        @include display-flex(flex,column);
+        gap: 1px;
+        .author,
+        .date,
+        .status{
+          @include display-flex(flex,row);
+          gap: 5px;
+          .label,
+          .value{
+            @include fluid-text(21,14);
+          }
+          .label{
+            font-weight: 500;
+          }
+          .value{
+            font-weight: normal;
+          }
+        }
+      }
+    }
+    .container-right{
+      @include display-flex(flex,column,space-between,center);
+      height: initial;
+      width: 10%;
+      .like-button{
+        cursor: pointer;
+        svg{
+          @include size(25px,28px);
+          stroke-width: 2px;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          @media screen and (min-width: 1981px){
+            @include size(35px,38px);
+          }
+        }
+      }
+    }
+  }
+
+}
+
+.folder__container,
+.model__container{
+  transform: scale(1);
+  transition: transform .4s linear;
+  &:hover{
+    transform: scale(1.02);
+  }
+}
+.folder__container {
+  border: 1px solid $color-blue;
+  .name{
+    @extend %text-truncate-line;
+    font-weight: 500;
+    @include fluid-text(23,16);
+    text-transform: capitalize;
+    @include text-truncate-line-style(1.7rem,6.8rem,4);
+    @media screen and (min-width: 1800px){
+      @include text-styles-large(2.2rem,8.8rem);
+    }
+  }
+}
+.model__container {
+  border: 1px solid $color-green;
+
+  .model__description{
+    @extend %text-truncate-line;
+    @include fluid-text(16, 13);
+    @include text-truncate-line-style(1.3rem,3.9rem,3);
+    @media screen and (max-width: 960px){
+      @include text-truncate-line-style(1.3rem,2.6rem,2);
+    }
+    @media screen and (min-width: 1800px){
+      @include text-styles-large(1.6rem,4.8rem);
+    }
+
+  }
+  .like-button{
+    svg{
+      stroke-width: 2px;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke: $color-green;
+    }
+  }
+}

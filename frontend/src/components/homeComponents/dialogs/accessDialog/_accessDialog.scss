@@ -1,0 +1,68 @@
+@import "../../../../static/extra-styles/animation";
+
+.access__dialog-icon{
+  @include square(30px);
+  order: 2;
+}
+.access-dialog__user-list{
+  @include display-flex(flex,column,start);
+  width: 100%;
+  gap: 15px;
+  h4{
+    font-size: 18px;
+    width: 100%;
+  }
+  .user-list{
+    @include display-flex(flex,column,flex-start,center);
+    gap: 10px ;
+  }
+  .access-dialog__user{
+    width: 100%;
+    @include display-flex(flex,row,space-between,center);
+    .user{
+      @include display-flex(flex,row,flex-start,center);
+      gap: 10px;
+      overflow-wrap: break-word;
+      word-break: break-all;
+      max-width: 400px;
+    }
+    .delete-user{
+      @include size(18px,22px);
+      transform: scale(1);
+      transition: transform .6s linear;
+      cursor: pointer;
+      &:hover{
+        transform: scale(1.5);
+      }
+
+    }
+  }
+}
+.access__dialog__edit{
+  @include display-flex(flex,column);
+  gap: 15px !important;
+
+  label{
+    font-size: 14px;
+  }
+
+  .access__input{
+    @include display-flex(flex,row,flex-start,center);
+    gap: 20px;
+    .access-dialog__submit{
+      position: relative;
+      cursor: pointer;
+      &::after{
+        @extend %underline-after
+      }
+      &:hover::after,
+      &:focus::after {
+        @extend %underline-hover-focus;
+      }
+    }
+  }
+}
+.access-button{
+  @include display-flex(flex,row,end);
+  width: 100%;
+}

@@ -1,0 +1,134 @@
+@import "../../../index";
+
+.dialog {
+  @include size(488px,fit-content);
+  padding: 24px;
+  @include display-flex(flex,column,flex-start,flex-start);
+  gap: 43px;
+  background-color: $color-light;
+  border-radius: 20px;
+  @media screen and (min-width:1800px ) {
+    width: 688px;
+  }
+  @media screen and (max-width:600px ) {
+    width: 358px;
+    padding: 16px;
+  }
+  .dialog__edit, .dialog__header{
+    @include display-flex(flex,column);
+    gap: 30px;
+
+    .dialog__icon-and-title{
+      @include display-flex(flex,row,flex-start,center);
+      gap: 13px;
+      .dialog__icon{
+        order: 2;
+        @include fluid-width(28,20);
+        aspect-ratio: 1;
+      }
+      .dialog__title{
+        @include fluid-text(35,24);
+        font-weight: 500;
+      }
+    }
+    .dialog__description{
+      @include fluid-text(22,14);
+    }
+    .dialog__input{
+      border-radius: 10px;
+      background: $color-light;
+      @include size(322px,30px);
+      padding: 10px;
+      text-transform: capitalize;
+      font-size: 17px;
+      @media screen and (min-width: 1800px){
+        @include size(500px,40px);
+        font-size: 20px;
+      }
+    }
+    .dialog__input-file{
+
+      width: 270px;
+      padding: 5px;
+      @include display-flex(flex,row,center,center);
+      @media screen and (min-width: 1800px){
+        width: 360px;
+        font-size: 20px;
+
+      }
+    }
+    .dialog__input-blue{
+      border: 1px solid $color-blue;
+    }
+    .dialog__input-green{
+      border: 1px solid $color-green;
+    }
+  }
+  .dialog__button-groups{
+    @include display-flex(flex,row);
+    gap: 15px;
+  }
+}
+.dialog-status{
+  width: 300px;
+  @media screen and (min-width: 1800px){
+    width: 550px;
+  }
+  .status-container{
+    @include display-flex(flex,row,flex-start,center);
+    gap: 15px;
+    input[type="radio"]{
+      @include custom-input;
+      &:checked{
+        background: $color-green;
+      }
+    }
+    label{
+      cursor: pointer;
+      font-size: 17px;
+      color: $color-dark;
+      transition: color .2s linear;
+      @media screen and (min-width: 1800px){
+        font-size: 22px;
+      }
+      &:hover{
+        color:$color-green;
+      }
+    }
+  }
+}
+.dialog-green{
+  border: 1.5px solid $color-green;
+
+}
+.dialog-blue{
+  border: 1.5px solid $color-blue;
+}
+
+.dropdown__button-icon-blue {
+  stroke: $color-blue;
+  transition: all .4s;
+  fill:$color-light;
+  &:hover {
+    fill: $color-blue;
+  }
+}
+
+.dropdown__button-icon-green {
+  stroke: $color-green;
+  transition: all .4s;
+  fill:$color-light;
+  width: 40px;
+  height: 30px;
+
+  &:hover {
+    fill: $color-green;
+  }
+  @media screen and (min-width:1800px) {
+    width: 50px;
+    height: 40px;
+  }
+}
+
+
+

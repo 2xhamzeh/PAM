@@ -1,0 +1,48 @@
+{
+  "name": "reactfrontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.2.5",
+    "@svgr/webpack": "^8.1.0",
+    "bpmn-js": "^17.8.1",
+    "file-saver": "^2.0.5",
+    "jspdf": "^2.5.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^9.1.2",
+    "react-responsive": "^10.0.0",
+    "react-router-dom": "^6.23.1",
+    "react-spinners": "^0.13.8",
+    "react-toastify": "^10.0.5",
+    "react-tooltip": "^5.26.4",
+    "sass": "^1.77.1",
+    "svg-to-pdf": "^1.4.4",
+    "svg-to-pdfkit": "^0.1.8",
+    "uuid": "^9.0.1",
+    "vite-plugin-svgr": "^4.2.0",
+    "xml-js": "^1.6.11"
+  },
+  "devDependencies": {
+    "@types/file-saver": "^2.0.7",
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
+    "@types/uuid": "^9.0.8",
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/parser": "^7.2.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.6",
+    "file-loader": "^6.2.0",
+    "typescript": "^5.2.2",
+    "vite": "^5.2.0"
+  }
+}

@@ -1,0 +1,105 @@
+@import "../../../../index";
+@import '../../../../static/extra-styles/animation';
+.button-container{
+  @include display-flex(flex,column,flex-end, center);
+  position: fixed;
+  height: 100%;
+  right: 0;
+  padding: 40px;
+  @media screen and (min-width: 1800px) {
+    padding: 30px 30px 26px 30px;
+  }
+
+
+}
+.button{
+
+  padding-top: 10px;
+  @include display-flex(flex,column,center, center);
+  align-self: end;
+  @media screen and (min-width: 1800px) {
+    margin: 20px;
+
+  }
+}
+.add-button {
+  position: absolute;
+  cursor: pointer;
+  z-index: 2;
+  @extend %scale;
+
+  img{
+  @media screen and (min-width: 1800px) {
+    width: 80px;
+  }
+}
+}
+
+.back {
+  position: absolute;
+  opacity: 0;
+  overflow: hidden;
+  height: 0;
+  transition: height 0.6s ease-in-out, bottom 0.6s ease-in-out, opacity 0.6s ease-in-out;
+  z-index: 1;
+
+  &.expand {
+    height: 128px;
+    opacity: 1;
+    bottom: 80px;
+    @media screen and (min-width: 1800px) {
+      height: 178px;
+    }
+    img{
+      @media screen and (min-width: 1800px) {
+        width: 70px;
+      }
+    }
+
+  }
+
+  &.collapse {
+    height: 0;
+    opacity: 0;
+    bottom: 10px;
+    img{
+      @media screen and (min-width: 1800px) {
+        width: 70px;
+      }
+    }
+  }
+}
+
+.buttons {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  @include display-flex(flex,column,flex-start, center);
+  padding-top: 18px;
+  gap: 15px;
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+
+  &.visible {
+    opacity: 1;
+    @include fadeIn();
+    animation: fadeIn 0.6s forwards;
+
+  }
+
+  &.hidden {
+    @include fadeOut();
+    animation: fadeOut 0.6s forwards;
+  }
+}
+
+.img-button {
+  @include size(30px,31px);
+  cursor: pointer;
+  z-index: 2;
+  @extend %scale;
+  @media screen and (min-width: 1800px) {
+    @include size(40px,41px);
+  }
+}

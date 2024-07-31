@@ -1,0 +1,118 @@
+@import "../../../../index";
+
+.dialog-move{
+    width:550px;
+    @media screen and (min-width: 1800px) {
+        width: 730px;
+        min-height: 450px;
+    }
+    @media screen and (max-width: 570px) {
+       width: 350px;
+    }
+}
+.move-dialog__target-dir {
+    border: .5px solid $color-dark;
+    border-radius: 10px;
+    width: 500px;
+    min-height: 300px;
+    @include display-flex(flex,column,space-between);
+    padding: 10px;
+    @media screen and (min-width: 1800px) {
+        width: 680px;
+        min-height: 350px;
+        padding: 20px;
+    }
+    @media screen and (max-width: 570px) {
+        width: 315px;
+        min-height: 330px;
+    }
+    .move-dialog__container{
+        @include display-flex(flex,column);
+        gap: 20px;
+
+        .path-container__extra{
+            justify-content: start;
+        }
+    }
+
+    .move-dialog__contained-dirs {
+        @include display-flex(flex,row wrap);
+        gap: 30px;
+        margin-bottom: 30px;
+
+        .contained-dir{
+            @include display-flex(flex,column,flex-start,center);
+            gap:5px;
+            cursor: pointer;
+            height: auto;
+            max-width: 130px;
+
+            input{
+                border-radius: 10px;
+                border: 1px solid $color-dark;
+                max-width: 120px;
+                padding-top: 1px;
+                padding-bottom: 1px;
+                padding-left: 6px;
+            }
+
+            .dir-name{
+                max-width: 15ch;
+                text-align: center;
+                /*word-break: break-word;
+                hyphens: auto;*/
+                @extend %text-truncate-line;
+                @include text-truncate-line-style(1.3rem,3.9rem,3);
+                @media screen and (min-width: 1800px) {
+                    font-size: 19px;
+
+                }
+
+            }
+
+            img{
+                @include size(60px,62px);
+                stroke-width: 2px;
+                @media screen and (min-width: 1800px) {
+                    @include size(75px,77px);
+
+                }
+            }
+        }
+        .contained-dir-new{
+            max-width: 110px;
+            @include display-flex(flex,column);
+            gap: 15px;
+            .button-group{
+                width: 100%;
+                @include display-flex(flex,row,space-between,center);
+                gap: 10px;
+
+                button{
+                    cursor: pointer;
+                    border-radius: 10px;
+                    border: 1px solid $color-dark;
+                    padding: 1px;
+                    width: 60px;
+                    font-size: 14px;
+                    color: $color-dark;
+                    background-color: $color-light;
+                    transition: all .4s ease-in-out;
+                    &:hover{
+                        color: $color-light;
+                        background-color: $color-light-blue;
+                    }
+                }
+            }
+        }
+
+    }
+    .add-btn{
+        cursor: pointer;
+
+        img{
+            @include square(35px);
+        }
+    }
+
+}

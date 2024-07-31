@@ -1,0 +1,21 @@
+version: '2'
+
+volumes:
+  db:
+
+services:
+  db:
+    image: mariadb:10.6
+    restart: always
+    command: --transaction-isolation=READ-COMMITTED --log-bin=binlog --binlog-format=ROW
+#    environment:
+#      - MYSQL_ROOT_PASSWORD=pw
+#      - MYSQL_PASSWORD=pw
+#      - MYSQL_DATABASE=db_example2
+#      - MYSQL_USER=user
+    env_file:
+      - .env
+    volumes:
+      - db:/var/lib/mysql
+    ports:
+      - "3306:3306"

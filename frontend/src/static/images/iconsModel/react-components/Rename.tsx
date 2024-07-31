@@ -1,0 +1,30 @@
+import React from "react";
+
+interface MenuIconProps {
+    className: string;
+}
+
+export const Rename:React.FC<MenuIconProps> = ({className}) => {
+    return (
+        <svg className={className}
+             width="16"
+             height="16"
+             viewBox="0 0 16 16"
+             fill="none"
+             xmlns="http://www.w3.org/2000/svg">
+            <path fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M11.5647 2.69831L13.3076 4.44122L14.2667
+                  3.45153C14.4202 3.29794 14.505 3.06491 14.505
+                  2.84595C14.5054 2.73922 14.4846 2.63347 14.4439
+                  2.5348C14.4032 2.43613 14.3434 2.34649 14.2679
+                  2.27103L13.7361 1.73927C13.6606 1.66347 13.5708
+                  1.60338 13.4719 1.56247C13.373 1.52156 13.267 1.50064
+                  13.16 1.50092C12.9426 1.50092 12.708 1.58537 12.555
+                  1.73927L11.5647 2.69831ZM1.50073 14.5034H3.21986L12.9379
+                  4.8097L11.1947 3.06619L1.50073 12.7842V14.5034Z"
+                  fill="none"/>
+        </svg>
+
+    );
+};

@@ -1,0 +1,68 @@
+@import '../../index';
+@import './animation.scss';
+.custom-button{
+  @include display-flex(flex,row,flex-start,center);
+  padding: 6px 12px;
+  gap: 16px;
+  border-radius: 30px;
+  background: transparent;
+  cursor: pointer;
+  @include fluid-text(20,16);
+  transition: all .6s;
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    &:hover{
+      background-color: transparent;
+      color: initial;
+    }
+  }
+  @media screen and (min-width: 1800px) {
+    font-size: 22px;
+    padding: 10px 16px;
+  }
+
+}
+.green-button{
+  border: 1px solid $color-green;
+  &:hover{
+    background-color: $color-green;
+    color: $color-light;
+  }
+}
+.blue-button{
+  border: 1px solid $color-blue;
+  &:hover{
+    background-color: $color-blue;
+    color: $color-light;
+  }
+}
+@media screen and (max-width:500px)  {
+  .custom-button{
+    padding: 5px 10px;
+    font-size: 14px;
+  }
+}
+
+.buttons-bpmn{
+  @include display-flex(flex,row wrap);
+  column-gap: 32px;
+  row-gap: 15px;
+  position: fixed;
+  bottom: 0;
+  padding-left: 78px;
+  padding-bottom: 23px;
+
+  @media screen and (max-width:600px)  {
+    padding-left: 28px;
+    column-gap: 10px;
+    padding-right: 20px;
+  }
+  .custom-button{
+    padding: 6px 12px;
+    @media screen and (min-width: 1800px) {
+      font-size: 22px;
+      padding: 10px 16px;
+    }
+  }
+}

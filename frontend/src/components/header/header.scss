@@ -1,0 +1,43 @@
+@import '../../index';
+@import '../../static/extra-styles/animation';
+.header{
+  @include size(100%,70px);
+  .header-menu{
+    .header-menu-list{
+      @include display-flex(flex,row nowrap,space-between,center);
+      padding: 0 20px 0 10px;
+      .header-menu-item{
+        a{
+          img{
+            @include size(125px,50px);
+            cursor: pointer;
+            @extend %scale;
+            @media screen and (min-width: 1800px) {
+              @include size(165px,90px);
+            }
+          }
+        }
+      }
+      .header-menu-item__flex{
+        @include display-flex(flex,row nowrap);
+        gap: 36px;
+        font-size: clamp(1rem, 0.365vw + 0.916rem, 1.5rem);
+        @media screen and (min-width: 2000px) {
+          font-size: 2rem;
+        }
+        a{
+          position: relative;
+          &::after{
+            @extend %underline-after-extra;
+          }
+          &:hover::after,
+          &:focus::after {
+            @extend %underline-hover-focus;
+          }
+        }
+      }
+    }
+  }
+}
+
+

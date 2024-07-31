@@ -1,0 +1,36 @@
+@import '../../index';
+@import '../../static/extra-styles/animation';
+
+.noPage__container{
+  @include display-flex(flex,column,center,center);
+  gap: 70px;
+  padding-inline: 15px;
+}
+.noPage__heading{
+  @include fluid-text(64,54);
+  @media screen and (min-width: 1800px) {
+    font-size: 85px;
+  }
+  font-weight: 500;
+}
+.noPage__desc{
+  @include fluid-text(35,25);
+  @media screen and (min-width: 1800px) {
+    font-size: 45px;
+  }
+  max-width: 28ch;
+  text-align: center;
+}
+.noPage__buttons{
+  @include display-flex(flex,row wrap,center,center);
+  gap: 45px;
+}
+
+@media screen and (max-width: 500px){
+  .noPage__container{
+    gap: 40px;
+  }
+  .noPage__buttons{
+    gap: 30px;
+  }
+}

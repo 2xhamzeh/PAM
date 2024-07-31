@@ -1,0 +1,82 @@
+@import "../../../index";
+@import "../../../static/extra-styles/animation";
+.dropdown__container {
+    position: relative;
+    @include display-flex(flex,column,end);
+    height: 100%;
+
+    .dropdown__button {
+        cursor: pointer;
+        @include display-flex(flex,row,center, center);
+        .dropdown__button-icon {
+            transition: fill .6s;
+            fill: none;
+            @include size(29px,32px);
+            @media screen and (min-width: 1981px) {
+                @include size(35px,38px);
+            }
+            stroke-width: 1.00189px;
+            stroke-miterlimit: 10;
+        }
+
+        .dropdown__button-icon-blue {
+            stroke: $color-blue;
+            transition: all .4s;
+            fill:$color-light;
+            &:hover {
+                fill: $color-blue;
+            }
+        }
+
+        .dropdown__button-icon-green {
+            stroke: $color-green;
+            transition: all .4s;
+            fill:$color-light;
+            &:hover {
+                fill: $color-green;
+            }
+        }
+    }
+    .dropdown__content {
+        min-width: 210px;
+        padding: 15px;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        background-color: $color-dialog-window;
+        border-radius: 5px;
+        @include display-flex(flex,column,start);
+        gap: 14px;
+        @media screen and (min-width: 1800px) {
+            min-width: 255px;
+        }
+
+        .dropdown__option {
+            @include display-flex(flex,row,flex-start,center);
+            column-gap: 15px;
+            cursor: pointer;
+            @include fluid-text(20,16);
+
+            .dropdown__option-icon{
+                @include fluid-width(20,16);
+                aspect-ratio: 1;
+            }
+            .dropdown__option-icon-green{
+                stroke: $color-green;
+                fill: none;
+            }
+            .dropdown__option-icon-blue{
+                stroke: $color-blue;
+                fill: none;
+            }
+            .dropdown__option-name{
+                @include fluid-text(20,14);
+                font-weight: normal;
+                transition: all .4s;
+                &:hover{
+                    @include fluid-text(21,15);
+                }
+            }
+        }
+    }
+}

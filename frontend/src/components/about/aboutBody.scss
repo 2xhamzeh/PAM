@@ -1,0 +1,53 @@
+@import "../../index";
+
+.about-body{
+  @include display-flex(flex,row wrap,space-between,start);
+  width: 90%;
+  gap: 30px;
+  @media screen and (min-width: 1981px){
+    justify-content: space-around;
+  }
+  @media screen and (max-width: 1200px){
+    @include display-flex(flex,row wrap,center,start);
+    text-align: center;
+    gap: 50px;
+  }
+
+  .about-container{
+    @include display-flex(flex,column,start,start);
+    gap: 20px;
+    @media screen and (max-width: 1200px){
+      @include display-flex(flex,column,center,center);
+      text-align: center;
+    }
+    h1{
+      max-width: 22ch;
+      @include fluid-text(30,24);
+      font-weight: 500;
+      @media screen and (min-width: 1981px){
+        font-size: 50px;
+      }
+    }
+    .about-description{
+      max-width: 30ch;
+      @include fluid-text(21,16);
+      @media screen and (min-width: 1981px){
+        font-size: 40px;
+      }
+      @media screen and (max-width: 1200px){
+        text-align: center;
+      }
+    }
+    .about-team{
+      @include display-flex(flex,column);
+      gap: 20px;
+      span{
+        @include fluid-text(20,15);
+        font-weight: 500;
+        @media screen and (min-width: 1981px){
+          font-size: 30px;
+        }
+      }
+    }
+  }
+}

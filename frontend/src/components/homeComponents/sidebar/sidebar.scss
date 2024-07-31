@@ -1,0 +1,209 @@
+@import '../../../index';
+@import '../../../static/extra-styles/animation';
+
+// General Styles
+.menu {
+  transition: width 0.4s;
+  position: fixed;
+  background-color: $color-dark;
+  height: 100dvh;
+  @include fluid-width(270, 100);
+  padding: 12px;
+
+  @media screen and (max-width: 930px) {
+    transition: width 0.4s;
+    &.open {
+      @include size(200px,100%);
+    }
+    &.closed {
+      @include size(43px,100%);
+    }
+  }
+
+  // Navbar Styles
+  .menu__navbar {
+    height: 100%;
+    @include display-flex(flex, column, space-between);
+
+    // Top Navbar List Styles
+    .menu__navbar__list-top {
+      @include display-flex(flex, column, start);
+      gap: 120px;
+
+      // Title Styles
+      .menu__navbar__list-title {
+        @include display-flex(flex,row,flex-start,center);
+        gap: 14px;
+
+        .menu-btn {
+          cursor: pointer;
+          display: none;
+          @include square(24px);
+          @media screen and (max-width: 930px) {
+            @include display-flex(flex,row,center);
+          }
+
+          .menu-btn_container {
+            position: absolute;
+            top: 35px;
+            left: 0;
+            right: 0;
+            width: 100%;
+            @include display-flex(flex, column, center, center);
+            gap: .3rem;
+
+            .arrow {
+              transition: transform .4s;
+              width: 23px;
+              box-shadow: 0 0 0 0.1px $color-light;
+              -webkit-box-shadow: 0 0 0 0.5px $color-light;
+              @include navigate_animation-hor();
+              @include web-navigate_animation-hor();
+              -webkit-animation: navigate_animation-hor 4s cubic-bezier(.45, .05, 0, 1) infinite;
+              animation: navigate_animation-hor 4s cubic-bezier(.45, .05, 0, 1) infinite;
+              animation-fill-mode: both;
+
+              &:nth-of-type(1) {
+                animation-delay: .4s;
+              }
+
+              &:nth-of-type(2) {
+                animation-delay: .5s;
+              }
+
+              &:nth-of-type(3) {
+                animation-delay: .6s;
+              }
+            }
+          }
+
+          .active {
+            top: 0;
+            position: relative;
+            width: 16px;
+            gap: 0;
+
+            .arrow {
+              transition: transform .4s;
+              width: 16px;
+              -webkit-box-shadow: 0 0 0 0.6px $color-light;
+              animation: none;
+
+              &:first-of-type {
+                -webkit-transform: rotate(-45deg);
+                -ms-transform: rotate(-45deg);
+                transform: rotate(-45deg);
+              }
+
+              &:last-of-type {
+                display: none;
+              }
+
+              &:nth-of-type(2) {
+                -webkit-transform: rotate(45deg);
+                -ms-transform: rotate(45deg);
+                transform: rotate(45deg);
+              }
+            }
+          }
+        }
+      }
+
+      // Logo Styles
+      .menu__navbar-list-item_logo {
+        font-weight: 500;
+        background: $color-gradient;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: .1px;
+        margin: 0;
+        @include fluid-text(80, 40);
+        transition: all .4s linear;
+
+        &:hover {
+          letter-spacing: 2.2px;
+        }
+
+        @media screen and (max-width: 930px) {
+          &.open {
+            opacity: 1;
+            font-size: 40px;
+          }
+
+          &.closed {
+            opacity: 0;
+            font-size: 1px;
+          }
+        }
+      }
+
+      // Navigation Styles
+      .menu__navbar-list_nav {
+        @include display-flex(flex, column, start);
+        gap: 30px;
+      }
+    }
+
+    // Bottom Navbar List Styles
+    .menu__navbar-list-bottom {
+      .menu__navbar-list_nav {
+        @include display-flex(flex, column, start);
+        gap: 20px;
+
+        .menu__navbar-list-item_link {
+          @include fluid-text(21, 15);
+        }
+      }
+    }
+  }
+
+  // List Item Styles
+  .menu__navbar-list-item {
+    cursor: pointer;
+    /*transform: scale(1);
+    transition: transform .6s linear;
+
+    &:hover {
+      transform: scale(1.1);
+    }*/
+
+    .menu__navbar-list-item_link {
+      @include fluid-text(24, 17);
+      color: $color-light;
+      letter-spacing: 0.9px;
+      @include display-flex(flex, row, flex-start, center);
+      text-wrap: nowrap;
+      gap: 15px;
+
+      img {
+        @include fluid-width(24, 17);
+        aspect-ratio: 1;
+      }
+
+      .item-link_text {
+        transition: all .7s ease-in-out;
+        position: relative;
+        &::after{
+          @extend %underline-after;
+        }
+        &:hover::after,
+        &:focus::after {
+          @extend %underline-hover-focus;
+        }
+
+        @media screen and (max-width: 925px) {
+          &.active {
+            opacity: 1;
+            font-size: 17px;
+          }
+
+          &.passive {
+            opacity: 0;
+            font-size: 1px;
+          }
+        }
+      }
+    }
+  }
+}
