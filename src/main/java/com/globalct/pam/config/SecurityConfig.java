@@ -29,7 +29,18 @@ import java.util.List;
 @EnableMethodSecurity
 @Profile("!test")
 public class SecurityConfig {
-    private static final String REACT_REDIRECT = "http://localhost:5173/home";
+    @Value("${react.redirect}")
+    private String REACT_REDIRECT;
+
+    @Value("${react.nopermission}")
+    private String REACT_NOPERMISSION;
+
+    @Value("${api.logout}")
+    private String API_LOGOUT;
+
+    @Value("${react.base_url}")
+    private String REACT_BASE_URL;
+
 
     /**
      * Configures the Azure Security Configuration
@@ -43,7 +54,7 @@ public class SecurityConfig {
         http.apply(AadWebApplicationHttpSecurityConfigurer.aadWebApplication());
         // the logout redirect url seems to be invalid here, the one in .env is being used instead, and it needs to be registered for it to work
         http
-                .logout(logout -> logout.logoutUrl("/quit-session").logoutSuccessUrl("http://localhost:8080/login/oauth2/code/"))
+                .logout(logout -> logout.logoutUrl("/quit-session").logoutSuccessUrl(API_LOGOUT))
                 .authorizeHttpRequests(
                         requests -> requests.requestMatchers("/").permitAll().anyRequest().authenticated())
                 // TODO: There should be a better way to handle csrf
@@ -52,7 +63,7 @@ public class SecurityConfig {
                     if (isAuth) {
                         response.sendRedirect(REACT_REDIRECT);
                     } else {
-                        response.sendRedirect("https://localhost:5173/nopermission");
+                        response.sendRedirect(REACT_NOPERMISSION);
                     }
                 })))
                 .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable));
@@ -67,7 +78,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:5173"));
+        configuration.setAllowedOrigins(Arrays.asList(REACT_BASE_URL));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
         configuration.setAllowCredentials(true);
         configuration.addAllowedHeader("*");
